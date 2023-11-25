@@ -1,8 +1,7 @@
 # Automatic1111-on-GKE-Autopilot
 Effortless AI Art: Deploying Stable Diffusion with Automatic1111 on GKE Autopilot
-
-Creating a comprehensive and user-friendly `README.md` file for your GitHub repository is essential to guide users through deploying a GPU-based container app on GKE Autopilot. Here's a suggested structure for your `README.md`:
-
+## GPU BASED Container App on GKE AutoPilot
+Deploying a GPU-based container app on GKE Autopilot.
 ---
 
 # Deploying GPU-Based Container App on GKE Autopilot
