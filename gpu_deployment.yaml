@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pictro-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pictro-app
+  template:
+    metadata:
+      labels:
+        app: pictro-app
+    spec:
+      containers:
+      - name: pictro-container
+        image: your image uri here
+        ports:
+        - containerPort: 7860
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+          requests:
+            cpu: "6"
+            memory: "60Gi"
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-pictro-app-scaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: pictro-app  # This should match the name of your Deployment
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80
